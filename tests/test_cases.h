@@ -1,25 +1,25 @@
+#include "ostream.h"
+#include "types.h"
+#include <ostream>
 #include <string>
 #include <vector>
-#include <ostream>
-#include "types.h"
-#include "ostream.h"
 
 struct TestCase
 {
-    std::string term{};
-    std::string source{};
-    RuleType rule{};
-    std::vector<std::string> reasons{};
+  std::string term{};
+  std::string source{};
+  RuleType rule{};
+  std::vector<std::string> reasons{};
 };
 
 inline auto& operator<<(std::ostream& os, TestCase const& test_case)
 {
-    os << "{.term=" << test_case.term //
-       << ", .source=" << test_case.source //
-       << ", .rule=" << test_case.rule //
-       << ", .reasons=" << test_case.reasons //
-       << "}";
-    return os;
+  os << "{.term=" << test_case.term //
+     << ", .source=" << test_case.source //
+     << ", .rule=" << test_case.rule //
+     << ", .reasons=" << test_case.reasons //
+     << "}";
+  return os;
 }
 
 struct TestGroup
@@ -28,7 +28,9 @@ struct TestGroup
   std::vector<TestCase> tests{};
 };
 
-static std::vector<TestGroup> const test_groups = {
+std::vector<TestGroup> test_groups()
+{
+  return  {
   TestGroup{
     .valid= true,
     .tests= {
@@ -973,3 +975,4 @@ static std::vector<TestGroup> const test_groups = {
                 TestCase{ .term = "つよい", .source = "つええ", .rule = RuleType::adj_i, .reasons = { "-e" } } }
   }
 };
+}

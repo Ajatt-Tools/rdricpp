@@ -17,7 +17,7 @@ bool is_result_included(std::vector<Deinflection> const& results, TestCase const
 
 TEST_CASE("Deinflect", "[deinflect]")
 {
-  for (TestGroup const& group: test_groups) {
+  for (TestGroup const& group: test_groups()) {
     for (TestCase const& test_case: group.tests) {
       REQUIRE(group.valid == is_result_included(deinflect(test_case.source), test_case));
     }
