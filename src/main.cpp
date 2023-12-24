@@ -67,8 +67,6 @@ auto deinflect(std::string_view const source) -> std::vector<Deinflection>
   };
 
   for (size_t idx = 0; idx < results.size(); ++idx) {
-    Deinflection const result = results.at(idx);
-
     for (RuleSet const& ruleset: rulesets) {
       for (Reason const& rule: ruleset.rules) {
         if (rule.empty()) {
@@ -76,11 +74,10 @@ auto deinflect(std::string_view const source) -> std::vector<Deinflection>
           break;
         }
 
-        if (
-          ((result.rules != RuleType::none) and ((rule.rules_in & result.rules) == RuleType::none))
-          or not result.term.ends_with(rule.kana_in)
-          or (result.term.size() - rule.kana_in.size() + rule.kana_out.size()) <= 0
-        ) {
+        if (Deinflection const& result = results.at(idx);
+            ((result.rules != RuleType::none) and ((rule.rules_in & result.rules) == RuleType::none))
+            or not result.term.ends_with(rule.kana_in)
+            or (result.term.size() - rule.kana_in.size() + rule.kana_out.size()) <= 0) {
           continue;
         } else {
           results.push_back(Deinflection{
