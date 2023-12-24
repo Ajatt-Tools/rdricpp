@@ -41,18 +41,16 @@ auto& operator<<(std::ostream& os, Deinflection const& deinflection)
 
 auto& operator<<(std::ostream& os, std::vector<Deinflection> const& deinflections)
 {
-  for (auto const& deinflection: deinflections) {
-    os << deinflection << ", ";
-  }
+  for (auto const& deinflection: deinflections) { os << deinflection << ", "; }
   os << '\n';
   return os;
 }
 
 template<typename Stored>
-auto concat(std::vector<Stored> const& first, std::vector<Stored> const& second) -> std::vector<Stored>
+auto copy_and_append(std::vector<Stored> const& first, Stored&& value) -> std::vector<Stored>
 {
   std::vector<Stored> joined = first;
-  joined.insert(joined.cend(), second.cbegin(), second.cend());
+  joined.push_back(value);
   return joined;
 }
 
@@ -88,12 +86,7 @@ auto deinflect(std::string_view const source) -> std::vector<Deinflection>
           results.push_back(Deinflection{
             .term = (result.term.substr(0, result.term.size() - rule.kana_in.size()).append(rule.kana_out)),
             .rules = rule.rules_out,
-            .reasons = concat(
-              result.reasons,
-              std::vector{
-                std::string(ruleset.name),
-              }
-            ),
+            .reasons = copy_and_append(result.reasons, std::string(ruleset.name)),
           });
         }
       }
@@ -107,5 +100,5 @@ int main()
 {
   // std::cout << rulesets.front() << std::endl;
   std::cout << deinflect("食べさせられたくなかった");
-   return 0;
+  return 0;
 }
