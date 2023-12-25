@@ -1,0 +1,37 @@
+---
+Checks: "*,
+        cppcoreguidelines-*,
+        modernize-*,
+        clang-*,
+        clang-analyzer-*,
+        readability-*,
+        -abseil-*,
+        -altera-*,
+        -android-*,
+        -fuchsia-*,
+        -google-*,
+        -llvm*,
+        -zircon-*,
+        -misc-non-private-member-variables-in-classes,
+        -modernize-use-trailing-return-type,
+        -readability-else-after-return,
+        -readability-static-accessed-through-instance,
+        -readability-avoid-const-params-in-decls,
+        -readability-identifier-length,
+        -cppcoreguidelines-non-private-member-variables-in-classes,
+        -cppcoreguidelines-pro-bounds-constant-array-index,
+        -bugprone-easily-swappable-parameters,
+        -google-readability-todo,
+        -google-readability-casting
+"
+WarningsAsErrors: ''
+HeaderFilterRegex: ''
+FormatStyle:     none
+
+CheckOptions:
+  - key: readability-identifier-length.IgnoredVariableNames
+    value: 'x|y|z'
+  - key: readability-identifier-length.IgnoredParameterNames
+    value: 'x|y|z'
+  - key: readability-identifier-length.MinimumParameterNameLength
+    value: '2'
