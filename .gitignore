@@ -1,0 +1,4 @@
+.xmake/
+build/
+/.cache
+.DS_Store
