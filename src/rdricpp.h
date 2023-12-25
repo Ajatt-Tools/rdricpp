@@ -17,14 +17,10 @@
  * with this program; if not, visit the http://fsf.org website.
  */
 
-#include "ostream.h"
-#include "rdricpp.h"
-#include <iostream>
+#pragma once
 
-int main(int const argc, char const* const* const argv)
-{
-  for (int idx = 1; idx < argc; ++idx) {
-    std::cout << deinflect(*std::next(argv, idx));
-  }
-  return 0;
-}
+#include "types.h"
+#include <string_view>
+#include <vector>
+
+auto deinflect(std::string_view const source) -> std::vector<Deinflection>;
