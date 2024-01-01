@@ -20,10 +20,11 @@
 #include "ostream.h"
 #include "rdricpp.h"
 #include <iostream>
+#include <ranges>
 
 int main(int const argc, char const* const* const argv)
 {
-  for (int idx = 1; idx < argc; ++idx) {
+  for (auto const idx: std::views::iota(1, argc)) {
     std::cout << deinflect(*std::next(argv, idx));
   }
   return 0;
