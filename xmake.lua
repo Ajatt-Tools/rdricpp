@@ -2,8 +2,18 @@ add_rules("mode.debug", "mode.release")
 set_languages("c++2b")
 set_warnings("allextra", "error")
 add_rules("plugin.compile_commands.autoupdate", {outputdir = "build"})
-set_policy("build.sanitizer.address", true)
-set_policy("build.sanitizer.undefined", true)
+
+if is_mode("debug") then
+    add_defines("DEBUG")
+    set_symbols("debug")
+    set_optimize("none")
+    set_policy("build.sanitizer.address", true)
+    set_policy("build.sanitizer.undefined", true)
+elseif is_mode("release") then
+    add_defines("NDEBUG")
+    set_optimize("faster") -- Arch Linux builds its packages with -O2
+    add_cxflags("-fstack-protector-strong", "-fstack-clash-protection")
+end
 
 local format = function(target)
     import("lib.detect.find_program")
