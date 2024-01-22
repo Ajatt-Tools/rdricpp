@@ -25,7 +25,7 @@
 int main(int const argc, char const* const* const argv)
 {
   for (auto const idx: std::views::iota(1, argc)) {
-    std::cout << deinflect(*std::next(argv, idx));
+    std::cout << ajt::rdricpp::deinflect(*std::next(argv, idx));
   }
   return 0;
 }

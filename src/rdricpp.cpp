@@ -26,6 +26,8 @@
 #include <string_view>
 #include <vector>
 
+namespace ajt::rdricpp {
+
 template<typename Stored>
 auto copy_and_prepend(std::vector<Stored> const& first, Stored&& value) -> std::vector<Stored>
 {
@@ -79,3 +81,5 @@ auto deinflect(std::string_view const source) -> std::vector<Deinflection>
 
   return results;
 }
+
+} // namespace ajt::rdricpp

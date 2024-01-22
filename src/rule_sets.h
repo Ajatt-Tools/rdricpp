@@ -24,6 +24,8 @@
 #include <iostream>
 #include <string_view>
 
+namespace ajt::rdricpp {
+
 static constexpr std::array rulesets = {
             RuleSet{
                 .name = "-ba",
@@ -3629,3 +3631,5 @@ static constexpr std::array rulesets = {
             },
 
 };
+
+}

@@ -25,6 +25,8 @@
 #include <string_view>
 #include <vector>
 
+namespace ajt::rdricpp {
+
 enum RuleType : uint32_t {
   none = 0U,
   v1 = 1U, // Verb ichidan
@@ -63,3 +65,5 @@ struct Deinflection
   RuleType rules{};
   std::vector<std::string> reasons{};
 };
+
+} // namespace ajt::rdricpp

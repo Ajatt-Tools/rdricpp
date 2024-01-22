@@ -25,6 +25,8 @@
 #include <string_view>
 #include <vector>
 
+namespace ajt::rdricpp {
+
 template<typename Stored, size_t Size>
 auto& operator<<(std::ostream& os, std::array<Stored, Size> const& array)
 {
@@ -76,3 +78,5 @@ inline auto& operator<<(std::ostream& os, std::vector<Deinflection> const& deinf
   os << '\n';
   return os;
 }
+
+} // namespace ajt::rdricpp

@@ -19,6 +19,8 @@
 
 #include "test_cases.h"
 
+namespace ajt::rdricpp {
+
 std::vector<TestGroup> test_groups()
 {
   return  {
@@ -967,3 +969,5 @@ std::vector<TestGroup> test_groups()
   }
 };
 }
+
+} // namespace ajt::rdricpp

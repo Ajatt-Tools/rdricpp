@@ -23,6 +23,8 @@
 #include <catch2/catch_test_macros.hpp>
 #include <ranges>
 
+namespace ajt::rdricpp {
+
 bool is_result_included(std::vector<Deinflection> const& results, TestCase const& test_case)
 {
   return std::ranges::any_of(std::views::all(results), [&test_case](Deinflection const& result) {
@@ -42,3 +44,5 @@ TEST_CASE("Deinflect", "[deinflect]")
     }
   }
 }
+
+} // namespace ajt::rdricpp

@@ -25,6 +25,8 @@
 #include <string>
 #include <vector>
 
+namespace ajt::rdricpp {
+
 struct TestCase
 {
   std::string term{};
@@ -50,3 +52,5 @@ struct TestGroup
 };
 
 std::vector<TestGroup> test_groups();
+
+}

@@ -23,4 +23,8 @@
 #include <string_view>
 #include <vector>
 
+namespace ajt::rdricpp {
+
 auto deinflect(std::string_view const source) -> std::vector<Deinflection>;
+
+}
