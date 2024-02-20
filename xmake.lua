@@ -2,6 +2,7 @@ add_rules("mode.debug", "mode.release")
 set_languages("c++2b")
 set_warnings("allextra", "error")
 add_rules("plugin.compile_commands.autoupdate", {outputdir = "build"})
+add_cxxflags("cl::/EHsc") -- doesn't build on msvc otherwise.
 
 if is_mode("debug") then
     add_defines("DEBUG")
